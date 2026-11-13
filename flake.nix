@@ -5,9 +5,9 @@
     "nixpkgs-26.05" = {
       url = "github:NixOS/nixpkgs/nixos-26.05";
     };
-    "nixpkgs-26.11" = {
-      url = "github:NixOS/nixpkgs/nixos-26.11";
-    };
+    # "nixpkgs-26.11" = {
+    #   url = "github:NixOS/nixpkgs/nixos-26.11";
+    # };
     nixpkgs-unstable = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
@@ -29,8 +29,9 @@
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
       modNames = [
+        "eternal-terminal"
         "nixpkgs/26.05"
-        "nixpkgs/26.11"
+        # "nixpkgs/26.11"
         "nixpkgs/unstable"
       ];
 
