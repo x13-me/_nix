@@ -47,7 +47,10 @@
     {
       nixosModules = modules // {
         default = {
-          imports = builtins.attrValues modules;
+          imports = map (modName: ./modules/${modName}) modNames;
+          _module.args = inputs // {
+            inherit inputs;
+          };
         };
       };
 
