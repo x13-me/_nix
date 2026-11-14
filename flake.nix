@@ -30,8 +30,8 @@
 
       modNames = [
         "eternal-terminal"
-        "nixpkgs/26.05"
-        # "nixpkgs/26.11"
+        "nixpkgs/26/05"
+        # "nixpkgs/26/11"
         "nixpkgs/unstable"
       ];
 
