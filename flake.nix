@@ -2,7 +2,7 @@
   description = "x13.me Nix modules flake";
 
   inputs = {
-    "nixpkgs-26.05" = {
+    "nixpkgs-26_05" = {
       url = "github:NixOS/nixpkgs/nixos-26.05";
     };
     # "nixpkgs-26.11" = {
