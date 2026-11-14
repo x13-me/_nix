@@ -37,8 +37,8 @@
 
       mkMod = modName: {
         imports = [ ./modules/${modName} ];
-        _module.args = inputs // {
-          inherit inputs;
+        _module.args = {
+          _inputs = inputs;
         };
       };
 
@@ -48,8 +48,8 @@
       nixosModules = modules // {
         default = {
           imports = map (modName: ./modules/${modName}) modNames;
-          _module.args = inputs // {
-            inherit inputs;
+          _module.args = {
+            _inputs = inputs;
           };
         };
       };

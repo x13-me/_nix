@@ -1,6 +1,6 @@
-{ inputs, ... }:
+{ _inputs, ... }:
 import ../release-module.nix {
-  flake = inputs."nixpkgs-26.05";
+  flake = _inputs."nixpkgs-26.05";
   registryName = "nixpkgs-26.05";
   overlayName = "26.05";
 }

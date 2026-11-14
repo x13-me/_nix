@@ -1,6 +1,6 @@
-{ inputs, ... }:
+{ _inputs, ... }:
 import ../release-module.nix {
-  flake = inputs.nixpkgs-unstable;
+  flake = _inputs.nixpkgs-unstable;
   registryName = "nixpkgs-unstable";
   overlayName = "unstable";
 }

@@ -1,8 +1,8 @@
 {
+  _inputs,
   config,
   lib,
   pkgs,
-  nixpkgs-unstable,
   ...
 }:
 let
@@ -34,8 +34,9 @@ in
 
         package = lib.mkOption {
           type = lib.types.package;
-          default = nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.eternal-terminal;
-          defaultText = lib.literalExpression "inputs.nixpkgs-unstable.legacyPackages.\${pkgs.stdenv.hostPlatform.system}.eternal-terminal";
+          default =
+            _inputs."nixpkgs-unstable".legacyPackages.${pkgs.stdenv.hostPlatform.system}.eternal-terminal;
+          defaultText = lib.literalExpression "_inputs.nixpkgs-unstable.legacyPackages.\${pkgs.stdenv.hostPlatform.system}.eternal-terminal";
           description = "Eternal Terminal package to use.";
         };
 
