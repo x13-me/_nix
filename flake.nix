@@ -20,7 +20,7 @@
       ...
     }@inputs:
     let
-      nixpkgs = inputs."nixpkgs-26.05";
+      nixpkgs = inputs."nixpkgs-26_05";
 
       systems = [
         "x86_64-linux"
