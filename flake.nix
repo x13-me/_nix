@@ -96,11 +96,14 @@
         "x"
       ];
 
+      mkModArgs = moduleArgs: moduleArgs // { _inputs = inputs; };
+
       mkMod = modName: {
-        imports = nixpkgs.lib.optionals (modName != "x") [ ./0/x ] ++ [ ./0/${modName} ];
-        _module.args = {
-          _inputs = inputs;
-        };
+        imports =
+          nixpkgs.lib.optionals (modName != "x") [
+            (moduleArgs: import ./0/x (mkModArgs moduleArgs))
+          ]
+          ++ [ (moduleArgs: import ./0/${modName} (mkModArgs moduleArgs)) ];
       };
 
       modules = nixpkgs.lib.genAttrs modNames mkMod;
@@ -108,10 +111,9 @@
     {
       nixosModules = modules // {
         default = {
-          imports = map (modName: ./0/${modName}) modNames;
-          _module.args = {
-            _inputs = inputs;
-          };
+          imports = map (
+            modName: moduleArgs: import ./0/${modName} (mkModArgs moduleArgs)
+          ) modNames;
         };
       };
 
