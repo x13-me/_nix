@@ -9,7 +9,7 @@ let
   enable = config.x.isGraphical;
 in
 {
-  imports = lib.optionals enable [
+  imports = [
     _inputs.adnauseam.nixosModules.default
   ];
 
