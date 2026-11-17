@@ -96,14 +96,16 @@
         "x"
       ];
 
-      mkModArgs = moduleArgs: moduleArgs // { _inputs = inputs; };
-
       mkMod = modName: {
         imports =
-          nixpkgs.lib.optionals (modName != "x") [
-            (moduleArgs: import ./0/x (mkModArgs moduleArgs))
+          nixpkgs.lib.optionals (modName != "x") [ ./0/x ]
+          ++ nixpkgs.lib.optionals (modName == "helium") [
+            inputs.adnauseam.nixosModules.default
           ]
-          ++ [ (moduleArgs: import ./0/${modName} (mkModArgs moduleArgs)) ];
+          ++ [ ./0/${modName} ];
+        _module.args = {
+          _inputs = inputs;
+        };
       };
 
       modules = nixpkgs.lib.genAttrs modNames mkMod;
@@ -111,9 +113,12 @@
     {
       nixosModules = modules // {
         default = {
-          imports = map (
-            modName: moduleArgs: import ./0/${modName} (mkModArgs moduleArgs)
-          ) modNames;
+          imports =
+            [ inputs.adnauseam.nixosModules.default ]
+            ++ map (modName: ./0/${modName}) modNames;
+          _module.args = {
+            _inputs = inputs;
+          };
         };
       };
 

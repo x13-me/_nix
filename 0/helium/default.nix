@@ -6,10 +6,6 @@
   ...
 }:
 {
-  imports = [
-    _inputs.adnauseam.nixosModules.default
-  ];
-
   environment = {
     systemPackages = lib.mkIf config.x.isGraphical (
       lib.mkBefore [

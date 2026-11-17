@@ -1,4 +1,10 @@
-{ lib, ... }:
+{
+  _inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [ ./service.nix ];
   services = {
