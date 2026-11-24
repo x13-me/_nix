@@ -53,9 +53,8 @@
     nixos-wsl = {
       url = "github:x13-me/NixOS-WSL/main";
     };
-    opencode-desktop = {
-      inputs.nixpkgs.follows = "nixpkgs-26_05";
-      url = "github:x13-me/opencode-desktop-nix";
+    numtide-llm-agents = {
+      url = "github:numtide/llm-agents.nix";
     };
     panafan = {
       inputs.nixpkgs.follows = "nixpkgs-unstable";
