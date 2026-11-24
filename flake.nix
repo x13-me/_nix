@@ -112,9 +112,7 @@
     {
       nixosModules = modules // {
         default = {
-          imports =
-            [ inputs.adnauseam.nixosModules.default ]
-            ++ map (modName: ./0/${modName}) modNames;
+          imports = [ inputs.adnauseam.nixosModules.default ] ++ map (modName: ./0/${modName}) modNames;
           _module.args = {
             _inputs = inputs;
           };
