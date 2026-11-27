@@ -89,7 +89,6 @@
       modNames = [
         "eternal-terminal"
         "helium"
-        "hyper-v"
         "nixpkgs/26/05"
         # "nixpkgs/26/11"
         "nixpkgs/unstable"
