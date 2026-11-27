@@ -2,7 +2,7 @@
 {
   programs = {
     yubikey-touch-detector = {
-      enable = lib.mkDefault config.x.isGraphical;
+      enable = lib.mkDefault (config.x.isGraphical && config.x.isPhysical);
     };
   };
 }
