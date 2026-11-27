@@ -94,6 +94,7 @@
         "nixpkgs/unstable"
         "users"
         "x"
+        "yubikey-touch-detector"
       ];
 
       mkMod = modName: {
